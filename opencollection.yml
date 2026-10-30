@@ -1,0 +1,32 @@
+opencollection: 1.0.0
+
+info:
+  name: wensh
+config:
+  proxy:
+    inherit: true
+    config:
+      protocol: http
+      hostname: ""
+      port: ""
+      auth:
+        username: ""
+        password: ""
+      bypassProxy: ""
+
+request:
+  variables:
+    - name: baseUrl
+      value: http://127.0.0.1:8000
+    - name: accessToken
+      value: replace-after-verification
+    - name: locale
+      value: en
+    - name: user_token
+      value: "{{user_token}}"
+bundled: false
+extensions:
+  bruno:
+    ignore:
+      - node_modules
+      - .git

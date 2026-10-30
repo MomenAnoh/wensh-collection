@@ -1,0 +1,21 @@
+info:
+  name: Terms and Conditions
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{baseUrl}}/api/v1/user/content/terms-and-conditions"
+  headers:
+    - name: Accept
+      value: application/json
+    - name: Accept-Language
+      value: "{{locale}}"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
