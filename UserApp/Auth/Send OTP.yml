@@ -26,3 +26,56 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+examples:
+  - name: example
+    request:
+      url: "{{baseUrl}}/api/v1/user/auth/otp/send"
+      method: POST
+      headers:
+        - name: Content-Type
+          value: application/json
+        - name: Accept
+          value: application/json
+        - name: Accept-Language
+          value: "{{locale}}"
+      body:
+        type: json
+        data: |-
+          {
+            "phone": "+201000000000"
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: host
+          value: 127.0.0.1:8000
+        - name: connection
+          value: close
+        - name: x-powered-by
+          value: PHP/8.4.19
+        - name: cache-control
+          value: no-cache, private
+        - name: date
+          value: Fri, 30 Oct 2026 12:54:22 GMT
+        - name: content-type
+          value: application/json
+        - name: x-ratelimit-limit
+          value: "10"
+        - name: x-ratelimit-remaining
+          value: "9"
+        - name: access-control-allow-origin
+          value: "*"
+      body:
+        type: json
+        data: |-
+          {
+            "message": "The verification code has been sent.",
+            "data": {
+              "expires_in": 300,
+              "resend_after": 60,
+              "otp": "123456"
+            }
+          }

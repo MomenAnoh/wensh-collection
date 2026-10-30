@@ -10,7 +10,7 @@ http:
     - name: Accept
       value: application/json
     - name: Authorization
-      value: "Bearer {{accessToken}}"
+      value: Bearer {{accessToken}}
   auth: inherit
 
 settings:
@@ -18,3 +18,53 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+examples:
+  - name: example
+    request:
+      url: "{{baseUrl}}/api/v1/user/profile"
+      method: GET
+      headers:
+        - name: Accept
+          value: application/json
+        - name: Authorization
+          value: Bearer {{accessToken}}
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: host
+          value: 127.0.0.1:8000
+        - name: connection
+          value: close
+        - name: x-powered-by
+          value: PHP/8.4.19
+        - name: cache-control
+          value: no-cache, private
+        - name: date
+          value: Fri, 30 Oct 2026 12:51:57 GMT
+        - name: content-type
+          value: application/json
+        - name: access-control-allow-origin
+          value: "*"
+      body:
+        type: json
+        data: |-
+          {
+            "message": "Profile data loaded successfully.",
+            "data": {
+              "id": 1,
+              "phone": "+201000000000",
+              "phone_verified_at": "2026-10-30T11:55:55.000000Z",
+              "name": null,
+              "email": null,
+              "emergency_contact_phone": null,
+              "profile_photo_url": null,
+              "profile_status": "pending",
+              "notification_preferences": {
+                "requests": true,
+                "offers": true
+              }
+            }
+          }

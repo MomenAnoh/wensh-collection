@@ -10,7 +10,7 @@ http:
     - name: Accept
       value: application/json
     - name: Authorization
-      value: "Bearer {{accessToken}}"
+      value: Bearer {{accessToken}}
   auth: inherit
 
 settings:
@@ -18,3 +18,44 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+examples:
+  - name: example
+    request:
+      url: "{{baseUrl}}/api/v1/user/auth/refresh"
+      method: POST
+      headers:
+        - name: Accept
+          value: application/json
+        - name: Authorization
+          value: Bearer {{accessToken}}
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: host
+          value: 127.0.0.1:8000
+        - name: connection
+          value: close
+        - name: x-powered-by
+          value: PHP/8.4.19
+        - name: cache-control
+          value: no-cache, private
+        - name: date
+          value: Fri, 30 Oct 2026 12:50:26 GMT
+        - name: content-type
+          value: application/json
+        - name: access-control-allow-origin
+          value: "*"
+      body:
+        type: json
+        data: |-
+          {
+            "message": "The access token has been refreshed.",
+            "data": {
+              "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3YxL3VzZXIvYXV0aC9yZWZyZXNoIiwiaWF0IjoxNzkzMzY0NjIxLCJleHAiOjE3OTMzODI2MjYsIm5iZiI6MTc5MzM2NDYyNiwianRpIjoic012NEhPTmlweHVrY3U1bSIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.gMLf2GAejo3LKRhchHO26UMzQUIWyIBq0a4SkJAD3Wk",
+              "token_type": "bearer",
+              "expires_in": 18000
+            }
+          }
