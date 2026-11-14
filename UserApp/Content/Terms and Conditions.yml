@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{baseUrl}}/api/v1/user/content/terms-and-conditions"
+  url: "{{userUrl}}/content/terms-and-conditions"
   headers:
     - name: Accept
       value: application/json
@@ -23,7 +23,7 @@ settings:
 examples:
   - name: example
     request:
-      url: "{{baseUrl}}/api/v1/user/content/terms-and-conditions"
+      url: "{{userUrl}}/content/terms-and-conditions"
       method: GET
       headers:
         - name: Accept

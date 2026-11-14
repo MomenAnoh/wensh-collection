@@ -1,0 +1,82 @@
+info:
+  name: Calculate Suggested Price
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{userUrl}}/order/calc-suggested-price"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+    - name: Accept-Language
+      value: "{{locale}}"
+  body:
+    type: json
+    data: |-
+      {
+        "from_latitude": 30.5687368,
+        "from_longitude": 31.0294824,
+        "to_latitude": 30.6586648,
+        "to_longitude": 31.0294824
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+examples:
+  - name: example
+    request:
+      url: "{{userUrl}}/order/calc-suggested-price"
+      method: POST
+      headers:
+        - name: Content-Type
+          value: application/json
+        - name: Accept
+          value: application/json
+        - name: Accept-Language
+          value: "{{locale}}"
+      body:
+        type: json
+        data: |-
+          {
+            "from_latitude": 30.5687368,
+            "from_longitude": 31.0294824,
+            "to_latitude": 30.6586648,
+            "to_longitude": 31.0294824
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: host
+          value: 127.0.0.1:8000
+        - name: connection
+          value: close
+        - name: x-powered-by
+          value: PHP/8.4.19
+        - name: cache-control
+          value: no-cache, private
+        - name: date
+          value: Sat, 14 Nov 2026 13:00:10 GMT
+        - name: content-type
+          value: application/json
+        - name: access-control-allow-origin
+          value: "*"
+      body:
+        type: json
+        data: |-
+          {
+            "message": "Suggested price calculated successfully.",
+            "data": {
+              "suggested_price": 100,
+              "tax_fee": 5
+            }
+          }

@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{baseUrl}}/api/v1/user/auth/otp/send"
+  url: "{{userUrl}}/auth/otp/send"
   headers:
     - name: Content-Type
       value: application/json
@@ -31,7 +31,7 @@ settings:
 examples:
   - name: example
     request:
-      url: "{{baseUrl}}/api/v1/user/auth/otp/send"
+      url: "{{userUrl}}/auth/otp/send"
       method: POST
       headers:
         - name: Content-Type
@@ -50,24 +50,28 @@ examples:
       status: 200
       statusText: OK
       headers:
-        - name: host
-          value: 127.0.0.1:8000
-        - name: connection
-          value: close
-        - name: x-powered-by
-          value: PHP/8.4.19
+        - name: access-control-allow-origin
+          value: "*"
         - name: cache-control
           value: no-cache, private
-        - name: date
-          value: Fri, 30 Oct 2026 12:54:22 GMT
         - name: content-type
           value: application/json
+        - name: date
+          value: Sat, 14 Nov 2026 13:06:14 GMT
+        - name: host
+          value: 7ea2-156-203-249-197.ngrok-free.app
+        - name: ngrok-agent-ips
+          value: 156.203.249.197
+        - name: x-powered-by
+          value: PHP/8.4.19
         - name: x-ratelimit-limit
           value: "10"
         - name: x-ratelimit-remaining
           value: "9"
-        - name: access-control-allow-origin
-          value: "*"
+        - name: x-robots-tag
+          value: noindex, nofollow
+        - name: transfer-encoding
+          value: chunked
       body:
         type: json
         data: |-

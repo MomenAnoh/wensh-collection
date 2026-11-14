@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{baseUrl}}/api/v1/user/auth/refresh"
+  url: "{{userUrl}}/auth/refresh"
   headers:
     - name: Accept
       value: application/json
@@ -23,7 +23,7 @@ settings:
 examples:
   - name: example
     request:
-      url: "{{baseUrl}}/api/v1/user/auth/refresh"
+      url: "{{userUrl}}/auth/refresh"
       method: POST
       headers:
         - name: Accept
@@ -34,28 +34,32 @@ examples:
       status: 200
       statusText: OK
       headers:
-        - name: host
-          value: 127.0.0.1:8000
-        - name: connection
-          value: close
-        - name: x-powered-by
-          value: PHP/8.4.19
-        - name: cache-control
-          value: no-cache, private
-        - name: date
-          value: Fri, 30 Oct 2026 12:50:26 GMT
-        - name: content-type
-          value: application/json
         - name: access-control-allow-origin
           value: "*"
+        - name: cache-control
+          value: no-cache, private
+        - name: content-type
+          value: application/json
+        - name: date
+          value: Sat, 14 Nov 2026 13:07:20 GMT
+        - name: host
+          value: 7ea2-156-203-249-197.ngrok-free.app
+        - name: ngrok-agent-ips
+          value: 156.203.249.197
+        - name: x-powered-by
+          value: PHP/8.4.19
+        - name: x-robots-tag
+          value: noindex, nofollow
+        - name: transfer-encoding
+          value: chunked
       body:
         type: json
         data: |-
           {
             "message": "The access token has been refreshed.",
             "data": {
-              "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3YxL3VzZXIvYXV0aC9yZWZyZXNoIiwiaWF0IjoxNzkzMzY0NjIxLCJleHAiOjE3OTMzODI2MjYsIm5iZiI6MTc5MzM2NDYyNiwianRpIjoic012NEhPTmlweHVrY3U1bSIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.gMLf2GAejo3LKRhchHO26UMzQUIWyIBq0a4SkJAD3Wk",
+              "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vN2VhMi0xNTYtMjAzLTI0OS0xOTcubmdyb2stZnJlZS5hcHAvYXBpL3YxL3VzZXIvYXV0aC9yZWZyZXNoIiwiaWF0IjoxNzk0NjU1ODM2LCJuYmYiOjE3OTQ2NjE2NDAsImp0aSI6IlFXTm5PMkxyanQ3UVE2RFUiLCJzdWIiOiIxIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.U7nr2lgVxyCKsXNcglwfZCPFNNwNbCS-lwpPoqZ5QhA",
               "token_type": "bearer",
-              "expires_in": 18000
+              "expires_in": null
             }
           }

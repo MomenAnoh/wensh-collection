@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{baseUrl}}/api/v1/user/auth/otp/verify"
+  url: "{{userUrl}}/auth/otp/verify"
   headers:
     - name: Content-Type
       value: application/json
@@ -43,7 +43,7 @@ settings:
 examples:
   - name: example
     request:
-      url: "{{baseUrl}}/api/v1/user/auth/otp/verify"
+      url: "{{userUrl}}/auth/otp/verify"
       method: POST
       headers:
         - name: Content-Type
@@ -72,13 +72,13 @@ examples:
         - name: cache-control
           value: no-cache, private
         - name: date
-          value: Fri, 30 Oct 2026 12:51:54 GMT
+          value: Sat, 14 Nov 2026 11:30:36 GMT
         - name: content-type
           value: application/json
         - name: x-ratelimit-limit
           value: "10"
         - name: x-ratelimit-remaining
-          value: "8"
+          value: "7"
         - name: access-control-allow-origin
           value: "*"
       body:
@@ -87,18 +87,18 @@ examples:
           {
             "message": "The phone number was verified successfully.",
             "data": {
-              "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3YxL3VzZXIvYXV0aC9vdHAvdmVyaWZ5IiwiaWF0IjoxNzkzMzY0NzE0LCJleHAiOjE3OTMzODI3MTQsIm5iZiI6MTc5MzM2NDcxNCwianRpIjoiRVpsV0t3dkZPa3Q3dm1aTCIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.SnCWbfUqXrglg-dsEP3DmiEQpodHKzqU0KJzXPI84aU",
+              "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3YxL3VzZXIvYXV0aC9vdHAvdmVyaWZ5IiwiaWF0IjoxNzk0NjU1ODM2LCJuYmYiOjE3OTQ2NTU4MzYsImp0aSI6IktsYVRUQWZoaWNrRk9Mb0EiLCJzdWIiOiIxIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.tOXM4enRTdZp4ynu3rAOguIooMMhjpvKtXPep798XB8",
               "token_type": "bearer",
-              "expires_in": 18000,
+              "expires_in": null,
               "user": {
                 "id": 1,
                 "phone": "+201000000000",
                 "phone_verified_at": "2026-10-30T11:55:55.000000Z",
-                "name": null,
-                "email": null,
-                "emergency_contact_phone": null,
+                "name": "Ahmed Mohamed",
+                "email": "ahmed@example.com",
+                "emergency_contact_phone": "+201000000001",
                 "profile_photo_url": null,
-                "profile_status": "pending",
+                "profile_status": "completed",
                 "notification_preferences": {
                   "requests": true,
                   "offers": true

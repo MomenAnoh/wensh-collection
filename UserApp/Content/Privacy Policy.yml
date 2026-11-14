@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{baseUrl}}/api/v1/user/content/privacy-policy"
+  url: "{{userUrl}}/content/privacy-policy"
   headers:
     - name: Accept
       value: application/json
@@ -23,7 +23,7 @@ settings:
 examples:
   - name: example
     request:
-      url: "{{baseUrl}}/api/v1/user/content/privacy-policy"
+      url: "{{userUrl}}/content/privacy-policy"
       method: GET
       headers:
         - name: Accept

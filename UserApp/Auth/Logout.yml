@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{baseUrl}}/api/v1/user/auth/logout"
+  url: "{{userUrl}}/auth/logout"
   headers:
     - name: Accept
       value: application/json
@@ -23,7 +23,7 @@ settings:
 examples:
   - name: example
     request:
-      url: "{{baseUrl}}/api/v1/user/auth/logout"
+      url: "{{userUrl}}/auth/logout"
       method: POST
       headers:
         - name: Accept

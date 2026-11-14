@@ -1,0 +1,5 @@
+name: test
+variables:
+  - name: userUrl
+    value: https://7ea2-156-203-249-197.ngrok-free.app/api/v1/user
+    description: ""

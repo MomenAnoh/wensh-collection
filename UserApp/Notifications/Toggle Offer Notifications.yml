@@ -5,7 +5,7 @@ info:
 
 http:
   method: PATCH
-  url: "{{baseUrl}}/api/v1/user/notifications/offers"
+  url: "{{userUrl}}/notifications/offers"
   headers:
     - name: Content-Type
       value: application/json
@@ -31,7 +31,7 @@ settings:
 examples:
   - name: example
     request:
-      url: "{{baseUrl}}/api/v1/user/notifications/offers"
+      url: "{{userUrl}}/notifications/offers"
       method: PATCH
       headers:
         - name: Content-Type
