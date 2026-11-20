@@ -11,6 +11,13 @@ http:
       value: application/json
     - name: Accept-Language
       value: "{{locale}}"
+  params:
+    - name: page
+      value: "1"
+      type: query
+    - name: per_page
+      value: "15"
+      type: query
   auth: inherit
 
 settings:

@@ -23,7 +23,7 @@ http:
         "to_latitude": 30.0131,
         "to_longitude": 31.2089,
         "type": "normal",
-        "payment_methods": ["cash"],
+        "payment_methods": "cash",
         "price": 150
       }
   auth: inherit
