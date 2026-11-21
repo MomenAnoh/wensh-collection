@@ -2,4 +2,11 @@ name: local
 variables:
   - name: userUrl
     value: http://127.0.0.1:8000/api/v1/user
-    description: ""
+  - name: driverUrl
+    value: http://127.0.0.1:8000/api/v1/driver
+  - name: offerId
+    value: "19"
+    description: Set this to the offer ID to accept.
+  - name: orderId
+    value: "1"
+    description: Set this to the order ID for the offer.

@@ -1,0 +1,41 @@
+info:
+  name: Login Wensh
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{driverUrl}}/auth/login"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+    - name: Accept-Language
+      value: "{{locale}}"
+  body:
+    type: json
+    data: |-
+      {
+        "phone": "1000000000",
+        "password": "password123"
+      }
+  auth: inherit
+
+runtime:
+  actions:
+    - type: set-variable
+      phase: after-response
+      selector:
+        expression: res.body?.data?.access_token || driver_token
+        method: jsonq
+      variable:
+        name: driver_token
+        scope: runtime
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

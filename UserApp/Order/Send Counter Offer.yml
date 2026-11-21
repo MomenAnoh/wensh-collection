@@ -1,0 +1,30 @@
+info:
+  name: Send Counter Offer
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{userUrl}}/order/offers"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+    - name: Accept-Language
+      value: "{{locale}}"
+  body:
+    type: json
+    data: |-
+      {
+        "order_id": "22",
+        "price": 140
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
