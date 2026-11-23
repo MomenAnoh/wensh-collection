@@ -1,36 +1,64 @@
 info:
   name: Register Wensh
   type: http
-  seq: 1
+  seq: 3
 
 http:
   method: POST
   url: "{{driverUrl}}/auth/register"
   headers:
-    - name: Content-Type
-      value: application/json
     - name: Accept
       value: application/json
     - name: Accept-Language
       value: "{{locale}}"
   body:
-    type: json
-    data: |-
-      {
-        "full_name": "Test Driver",
-        "phone_code": "+20",
-        "phone": "1000000000",
-        "password": "password123",
-        "password_confirmation": "password123"
-      }
-  auth: inherit
+    type: multipart-form
+    data:
+      - name: phone_code
+        type: text
+        value: "+20"
+      - name: phone
+        type: text
+        value: "1000000000"
+      - name: full_name
+        type: text
+        value: "Test Driver"
+      - name: email
+        type: text
+        value: "driver@example.com"
+      - name: photo
+        type: file
+        value:
+          - "./files/driver-photo.jpg"
+        contentType: image/jpeg
+        description: Select a JPG or PNG profile photo up to 5 MB.
+      - name: license_image
+        type: file
+        value:
+          - "./files/driver-license.jpg"
+        contentType: image/jpeg
+        description: Select a JPG, PNG, or PDF license image up to 5 MB.
+      - name: truck_plate_number
+        type: text
+        value: "ABC-1234"
+      - name: truck_image
+        type: file
+        value:
+          - "./files/winch.jpg"
+        contentType: image/jpeg
+        description: Select a JPG or PNG winch photo up to 5 MB.
+      - name: coverage_radius_km
+        type: text
+        value: "400"
+        description: Maximum 400 km.
+  auth: none
 
 runtime:
   actions:
     - type: set-variable
       phase: after-response
       selector:
-        expression: res.body?.data?.access_token || driver_token
+        expression: res.body?.data?.access_token || ""
         method: jsonq
       variable:
         name: driver_token
@@ -42,3 +70,6 @@ settings:
   followRedirects: true
   maxRedirects: 5
   forwardAuthorizationHeader: true
+
+docs: |-
+  Submit the verified phone and registration details as multipart form-data. Replace each sample file path with a real local JPG, PNG, or PDF file. New accounts are created pending admin review.

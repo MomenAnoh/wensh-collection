@@ -1,0 +1,24 @@
+info:
+  name: Get Registration Status
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: "{{driverUrl}}/auth/status"
+  headers:
+    - name: Accept
+      value: application/json
+    - name: Accept-Language
+      value: "{{locale}}"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: |-
+  Requires the driver_token returned after login by OTP or registration. Returns pending, approved, or rejected and the rejection reason when available.

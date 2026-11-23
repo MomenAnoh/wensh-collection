@@ -1,11 +1,11 @@
 info:
-  name: Login Wensh
+  name: Verify OTP Wensh
   type: http
   seq: 2
 
 http:
   method: POST
-  url: "{{driverUrl}}/auth/login"
+  url: "{{driverUrl}}/auth/otp/verify"
   headers:
     - name: Content-Type
       value: application/json
@@ -17,17 +17,18 @@ http:
     type: json
     data: |-
       {
+        "phone_code": "+20",
         "phone": "1000000000",
-        "password": "password123"
+        "code": "123456"
       }
-  auth: inherit
+  auth: none
 
 runtime:
   actions:
     - type: set-variable
       phase: after-response
       selector:
-        expression: res.body?.data?.access_token || driver_token
+        expression: res.body?.data?.access_token || ""
         method: jsonq
       variable:
         name: driver_token
@@ -39,3 +40,6 @@ settings:
   followRedirects: true
   maxRedirects: 5
   forwardAuthorizationHeader: true
+
+docs: |-
+  Existing drivers receive a token here. New phone numbers return registration_required=true and continue to Register Wensh.
