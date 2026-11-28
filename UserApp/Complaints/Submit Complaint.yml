@@ -1,0 +1,39 @@
+info:
+  name: Submit Complaint
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{userUrl}}/complaints"
+  headers:
+    - name: Accept
+      value: application/json
+    - name: Accept-Language
+      value: "{{locale}}"
+  body:
+    type: multipart-form
+    data:
+      - name: complaint_type_id
+        type: text
+        value: "1"
+        description: ID returned by Get Complaint Types for the user audience.
+      - name: description
+        type: text
+        value: "Describe the issue here."
+        description: Required; maximum 5000 characters.
+      - name: image
+        type: file
+        value: []
+        description: Optional JPG, JPEG, PNG, or WEBP image up to 5 MB.
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: |-
+  Submit a complaint as the authenticated user. Send complaint_type_id and description as multipart form-data. The image field is optional. Only active complaint types for the user audience are accepted.

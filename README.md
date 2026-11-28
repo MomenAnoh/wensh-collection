@@ -28,6 +28,8 @@ Driver registration requires a verified phone. OTP verification returns a short-
 | GET | `/content/privacy-policy` | Public | Localized privacy content. |
 | GET | `/content/about-us` | Public | Localized about content. |
 | GET | `/content/faqs` | Public | Ordered FAQ list localized using `Accept-Language` (`ar` or `en`). |
+| GET | `/complaint-types` | Public | Active, localized complaint types for the user audience. |
+| POST | `/complaints` | User | Multipart `complaint_type_id`, `description` (max 5000 characters), and optional `image` (JPG/JPEG/PNG/WEBP, max 5 MB). Only active user complaint types are accepted; limited to 10 requests/minute. |
 | GET | `/car-types` | Public | Paginated car types. Optional `page` and `per_page`; `per_page` is clamped to 1–50 (default 15). |
 | POST | `/order/calc-suggested-price` | User | JSON `from_latitude`, `from_longitude`, `to_latitude`, `to_longitude`; valid coordinate ranges are −90..90 and −180..180. |
 | POST | `/order` | User | Create an order. Required `car_type_id`, `from_address`, `to_address`, four coordinates, `type` (`normal` or `scheduled`), `payment_methods` (`cash` or `online`), and non-negative `price`. For `scheduled`, also provide `scheduled_day` (today or later) and `scheduled_time` (`HH:mm`). For `online`, the response contains only three signed links: `payment_url` (GET), `success_url` (POST), and `failure_url` (POST), valid for 15 minutes; it omits the order resource. Success sets order/offer to `accepted`; failure returns them to `pending` and broadcasts the order to drivers. |
@@ -46,6 +48,12 @@ Driver registration requires a verified phone. OTP verification returns a short-
 | POST | `/auth/otp/verify` | Public | JSON `phone_code`, `phone`, and six-digit `code`. Existing drivers receive a token; new numbers receive `registration_required: true`. |
 | POST | `/auth/register` | Public after OTP verification | Multipart form: `registration_token` (returned by OTP verification), `full_name`, optional `email`, `photo` (JPG/PNG, max 5 MB), `license_image` (JPG/PNG/PDF, max 5 MB), `truck_plate_number`, `truck_image` (JPG/PNG, max 5 MB), and `coverage_radius_km` (integer 1–400). Token expires with OTP verification (5 minutes) and is single-use. |
 | GET | `/auth/status` | Driver | Return verification status and optional rejection reason. |
+| GET | `/content/terms-and-conditions` | Public | Localized terms content for Wensh providers. |
+| GET | `/content/privacy-policy` | Public | Localized privacy content for Wensh providers. |
+| GET | `/content/about-us` | Public | Localized about content for Wensh providers. |
+| GET | `/content/faqs` | Public | Ordered Wensh FAQ list localized using `Accept-Language` (`ar` or `en`). |
+| GET | `/complaint-types` | Public | Active, localized complaint types for Wensh providers. |
+| POST | `/complaints` | Driver | Multipart `complaint_type_id`, `description` (max 5000 characters), and optional `image` (JPG/JPEG/PNG/WEBP, max 5 MB). Only active Wensh complaint types are accepted; limited to 10 requests/minute. |
 | GET | `/offers` | Approved driver | Paginated offers assigned to the authenticated Wensh. Optional `filter=completed` or `filter=cancelled` filters by the related order's status; omit `filter` for all order statuses. Optional `per_page` is clamped to 1–50 (default 15). |
 | GET | `/offers/all` | Approved driver | Paginated list of offers across Wenshes. Optional `per_page` is clamped to 1–50 (default 15). |
 | POST | `/offers` | Approved driver | JSON `{ "order_id": 22, "price": 120 }`; price must be greater than zero. |
