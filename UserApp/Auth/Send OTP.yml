@@ -83,3 +83,10 @@ examples:
               "otp": "123456"
             }
           }
+docs: |-
+  Send a one-time verification code to the user's phone.
+  
+  Request body (JSON):
+  - `phone` (string, required): phone number with country code in E.164 format, for example `+201000000000` (a `+` followed by 8–15 digits).
+  
+  Rate limited to 10 requests per minute. Local/testing may return the OTP in `data.otp`; production may omit it. The response also includes `expires_in` and `resend_after`.

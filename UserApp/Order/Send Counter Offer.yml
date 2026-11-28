@@ -28,3 +28,11 @@ settings:
   followRedirects: true
   maxRedirects: 5
   forwardAuthorizationHeader: true
+docs: |-
+  Send a counter offer on one of the authenticated user's pending orders. Returns the created offer (HTTP 201); invalid order/offer state returns HTTP 422.
+  
+  Request body (JSON):
+  - `order_id` (integer, required): the user's order ID.
+  - `price` (number, required): counter-offer price greater than zero.
+  
+  Requires the user bearer token and an order with an available driver offer.

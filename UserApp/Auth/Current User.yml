@@ -72,3 +72,7 @@ examples:
               }
             }
           }
+docs: |-
+  Return the authenticated user's account and profile data.
+  
+  Inputs: no query parameters or request body. Requires the user bearer token (`user_token`). Send `Accept-Language: {{locale}}` to select the response language.

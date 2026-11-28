@@ -73,3 +73,10 @@ examples:
               "requests_enabled": true
             }
           }
+docs: |-
+  Enable or disable notifications about service requests for the authenticated user. The response returns the saved `requests_enabled` value.
+  
+  Request body (JSON):
+  - `enabled` (boolean, required): `true` to enable or `false` to disable.
+  
+  Requires the user bearer token.

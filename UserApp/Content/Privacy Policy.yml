@@ -20,56 +20,5 @@ settings:
   maxRedirects: 5
   forwardAuthorizationHeader: true
 
-examples:
-  - name: example
-    request:
-      url: "{{userUrl}}/content/privacy-policy"
-      method: GET
-      headers:
-        - name: Accept
-          value: application/json
-        - name: Accept-Language
-          value: "{{locale}}"
-    response:
-      status: 200
-      statusText: OK
-      headers:
-        - name: host
-          value: 127.0.0.1:8000
-        - name: connection
-          value: close
-        - name: x-powered-by
-          value: PHP/8.4.19
-        - name: cache-control
-          value: no-cache, private
-        - name: date
-          value: Fri, 30 Oct 2026 12:52:46 GMT
-        - name: content-type
-          value: application/json
-        - name: access-control-allow-origin
-          value: "*"
-      body:
-        type: json
-        data: |-
-          {
-            "message": "Content loaded successfully.",
-            "data": {
-              "slug": "privacy-policy",
-              "title": "Privacy Policy",
-              "last_updated": "2026-10-01",
-              "sections": [
-                {
-                  "title": "Information we collect",
-                  "body": "We collect your phone number, name, optional contact details, location when you request service, and the request details you provide."
-                },
-                {
-                  "title": "How we use information",
-                  "body": "We use your information to provide the service, communicate about your request, and improve the app experience. We do not sell your personal data."
-                },
-                {
-                  "title": "Your rights",
-                  "body": "You can update your profile or request deletion of your account and data through the support channels available in the app."
-                }
-              ]
-            }
-          }
+docs: |-
+  Returns the localized privacy policy with title, last_updated, and sections.

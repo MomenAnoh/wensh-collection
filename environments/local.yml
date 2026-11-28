@@ -8,5 +8,5 @@ variables:
     value: "19"
     description: Set this to the offer ID to accept.
   - name: orderId
-    value: "1"
+    value: "7"
     description: Set this to the order ID for the offer.

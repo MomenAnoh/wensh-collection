@@ -26,3 +26,11 @@ settings:
   followRedirects: true
   maxRedirects: 5
   forwardAuthorizationHeader: true
+docs: |-
+  Return the available car types in the selected language.
+  
+  Query parameters (both optional):
+  - `page` (integer): page number; defaults to 1.
+  - `per_page` (integer): results per page; defaults to 15 and is clamped to 1–50.
+  
+  No request body or authentication is required. Each result contains `id` and localized `name`; pagination metadata is included.

@@ -20,52 +20,5 @@ settings:
   maxRedirects: 5
   forwardAuthorizationHeader: true
 
-examples:
-  - name: example
-    request:
-      url: "{{userUrl}}/content/about-us"
-      method: GET
-      headers:
-        - name: Accept
-          value: application/json
-        - name: Accept-Language
-          value: "{{locale}}"
-    response:
-      status: 200
-      statusText: OK
-      headers:
-        - name: host
-          value: 127.0.0.1:8000
-        - name: connection
-          value: close
-        - name: x-powered-by
-          value: PHP/8.4.19
-        - name: cache-control
-          value: no-cache, private
-        - name: date
-          value: Fri, 30 Oct 2026 12:52:51 GMT
-        - name: content-type
-          value: application/json
-        - name: access-control-allow-origin
-          value: "*"
-      body:
-        type: json
-        data: |-
-          {
-            "message": "Content loaded successfully.",
-            "data": {
-              "slug": "about-us",
-              "title": "About Us",
-              "last_updated": "2026-10-01",
-              "sections": [
-                {
-                  "title": "Wensh",
-                  "body": "We help you reach roadside service providers when you need assistance through a simple experience that connects you with the right service."
-                },
-                {
-                  "title": "Our goal",
-                  "body": "Our goal is to make roadside service requests and tracking easier from one place, with clear request information."
-                }
-              ]
-            }
-          }
+docs: |-
+  Returns the localized about page with title, last_updated, and sections.

@@ -18,8 +18,10 @@ http:
     data: |-
       {
         "car_type_id": 1,
+        "from_address": "شارع الجيش، طنطا",
         "from_latitude": 30.0444,
         "from_longitude": 31.2357,
+        "to_address": "مركز النور، طريق طنطا - المحلة",
         "to_latitude": 30.0131,
         "to_longitude": 31.2089,
         "type": "normal",
@@ -52,12 +54,14 @@ examples:
         data: |-
           {
             "car_type_id": 1,
+            "from_address": "شارع الجيش، طنطا",
             "from_latitude": 30.0444,
             "from_longitude": 31.2357,
+            "to_address": "مركز النور، طريق طنطا - المحلة",
             "to_latitude": 30.0131,
             "to_longitude": 31.2089,
             "type": "normal",
-            "payment_methods": ["cash"],
+            "payment_methods": "cash",
             "price": 150
           }
     response:
@@ -86,8 +90,10 @@ examples:
             "data": {
               "id": 2,
               "car_type_id": 1,
+              "from_address": "شارع الجيش، طنطا",
               "from_latitude": 30.0444,
               "from_longitude": 31.2357,
+              "to_address": "مركز النور، طريق طنطا - المحلة",
               "to_latitude": 30.0131,
               "to_longitude": 31.2089,
               "type": "normal",
@@ -103,3 +109,25 @@ examples:
               "final_price": "157.50"
             }
           }
+docs: |-
+  ## POST {{userUrl}}/order
+
+  Create a service order for the authenticated user. The request body is JSON, and the user bearer token is required.
+
+  ### Required body fields
+  - `car_type_id` (integer): ID of an existing car type.
+  - `from_address` (string, required): pickup address shown on the order card, up to 255 characters.
+  - `from_latitude` (number): pickup latitude from -90 to 90.
+  - `from_longitude` (number): pickup longitude from -180 to 180.
+  - `to_address` (string, required): destination address shown on the order card, up to 255 characters.
+  - `to_latitude` (number): destination latitude from -90 to 90.
+  - `to_longitude` (number): destination longitude from -180 to 180.
+  - `type` (string): `normal` or `scheduled`.
+  - `payment_methods` (string, required): `cash` or `online`.
+  - `price` (number): requested price, zero or greater.
+
+  ### Conditional fields
+  - `scheduled_day` (date): required when `type` is `scheduled`; must be today or a future date.
+  - `scheduled_time` (string): required when `type` is `scheduled`; use 24-hour `HH:mm` format.
+
+  For `cash`, the response returns the created order. For `online`, both statuses start as `pending_for_payed` and the response data contains only three temporary signed links: `payment_url` (GET page), `success_url` (POST callback), and `failure_url` (POST callback). They expire after 15 minutes. Success sets both statuses to `accepted`; failure returns both to `pending` and sends the order to drivers. The online response does not include the order resource.

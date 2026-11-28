@@ -1,0 +1,26 @@
+info:
+  name: Delete Account
+  type: http
+  seq: 6
+
+http:
+  method: DELETE
+  url: "{{userUrl}}/auth/account"
+  headers:
+    - name: Accept
+      value: application/json
+    - name: Accept-Language
+      value: "{{locale}}"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: |-
+  Soft-delete the authenticated user's account and invalidate the current bearer token. No request body is required.
+
+  If the user later verifies the same phone number with OTP, the existing account is restored and its previous data is retained.

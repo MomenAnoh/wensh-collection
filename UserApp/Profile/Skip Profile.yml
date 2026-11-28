@@ -1,0 +1,26 @@
+info:
+  name: Skip Profile
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{userUrl}}/profile/skip"
+  headers:
+    - name: Accept
+      value: application/json
+    - name: Authorization
+      value: Bearer {{user_token}}
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: |-
+  Mark the authenticated user's profile setup as skipped and return the updated user object with `profile_status: skipped`.
+  
+  Inputs: no query parameters or request body. Requires the user bearer token.

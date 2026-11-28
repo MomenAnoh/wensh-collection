@@ -1,0 +1,32 @@
+info:
+  name: Send Message
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{userUrl}}/chat/messages"
+  headers:
+    - name: Accept
+      value: application/json
+    - name: Accept-Language
+      value: "{{locale}}"
+    - name: Content-Type
+      value: application/json
+  auth: inherit
+  body:
+    type: json
+    data: |
+      {
+        "message": "I need help with my request."
+      }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: |-
+  Sends a text message to the system. Laravel stores it and emits chat_message_created to the user chat room and the admin dashboard room. message is required and limited to 4000 characters.

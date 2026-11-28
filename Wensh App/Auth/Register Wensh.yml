@@ -14,12 +14,10 @@ http:
   body:
     type: multipart-form
     data:
-      - name: phone_code
+      - name: registration_token
         type: text
-        value: "+20"
-      - name: phone
-        type: text
-        value: "1000000000"
+        value: "{{wensh_registration_token}}"
+        description: Token returned by Verify OTP Wensh; it identifies the verified phone.
       - name: full_name
         type: text
         value: "Test Driver"
@@ -72,4 +70,6 @@ settings:
   forwardAuthorizationHeader: true
 
 docs: |-
-  Submit the verified phone and registration details as multipart form-data. Replace each sample file path with a real local JPG, PNG, or PDF file. New accounts are created pending admin review.
+  Submit the registration_token returned by Verify OTP Wensh and the registration details as multipart form-data. The verified phone number is read from the token; do not enter it again. The token expires with the OTP verification (5 minutes) and can only be used once.
+  
+  Replace each sample file path with a real local JPG, PNG, or PDF file. New accounts are created pending admin review.

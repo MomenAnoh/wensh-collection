@@ -55,3 +55,7 @@ examples:
             "message": "You have been logged out.",
             "data": null
           }
+docs: |-
+  Log out the authenticated user and invalidate the current bearer token.
+  
+  Inputs: no query parameters or request body. Requires the user bearer token. The response returns `data: null`.

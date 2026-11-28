@@ -73,3 +73,10 @@ examples:
               "offers_enabled": true
             }
           }
+docs: |-
+  Enable or disable notifications about offers for the authenticated user. The response returns the saved `offers_enabled` value.
+  
+  Request body (JSON):
+  - `enabled` (boolean, required): `true` to enable or `false` to disable.
+  
+  Requires the user bearer token.

@@ -80,3 +80,13 @@ examples:
               "tax_fee": 5
             }
           }
+docs: |-
+  Calculate a suggested price and tax fee for a trip. Requires the user bearer token.
+  
+  Request body (JSON; all fields required):
+  - `from_latitude` (number): pickup latitude, −90 to 90.
+  - `from_longitude` (number): pickup longitude, −180 to 180.
+  - `to_latitude` (number): destination latitude, −90 to 90.
+  - `to_longitude` (number): destination longitude, −180 to 180.
+  
+  Send `Accept-Language: {{locale}}` for localized messages.

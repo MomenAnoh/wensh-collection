@@ -88,3 +88,13 @@ examples:
               }
             }
           }
+docs: |-
+  Update the authenticated user's profile. Returns the updated user object. Requires the user bearer token.
+  
+  Request fields:
+  - `name` (string, required): up to 255 characters.
+  - `email` (string, optional/null): valid email up to 255 characters; must be unique among other users.
+  - `emergency_contact_phone` (string, optional/null): E.164 phone number (`+` and 8–15 digits).
+  - `profile_photo` (file, optional/null): JPG, JPEG, PNG, or WEBP image up to 5 MB. Send the request as `multipart/form-data` when uploading this field; otherwise JSON is supported.
+  
+  The sample request demonstrates the text fields. Add `profile_photo` as a file part only when uploading an image.

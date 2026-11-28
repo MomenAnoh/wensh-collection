@@ -68,3 +68,7 @@ examples:
               }
             }
           }
+docs: |-
+  Return the authenticated user's profile and notification preferences.
+  
+  Inputs: no query parameters or request body. Requires the user bearer token. The result includes `profile_status` (`pending`, `completed`, or `skipped`).

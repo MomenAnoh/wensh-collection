@@ -33,6 +33,14 @@ runtime:
       variable:
         name: driver_token
         scope: runtime
+    - type: set-variable
+      phase: after-response
+      selector:
+        expression: res.body?.data?.registration_token || ""
+        method: jsonq
+      variable:
+        name: wensh_registration_token
+        scope: runtime
 
 settings:
   encodeUrl: true
@@ -42,4 +50,4 @@ settings:
   forwardAuthorizationHeader: true
 
 docs: |-
-  Existing drivers receive a token here. New phone numbers return registration_required=true and continue to Register Wensh.
+  Existing drivers receive an access token here. New phone numbers return registration_required=true and a registration_token; use that token in Register Wensh instead of entering the phone number again.

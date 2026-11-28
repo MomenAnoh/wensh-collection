@@ -63,3 +63,7 @@ examples:
               "expires_in": null
             }
           }
+docs: |-
+  Issue a refreshed bearer token for the authenticated user. The response contains `access_token`, `token_type`, and `expires_in`; use the new access token for later requests.
+  
+  Inputs: no query parameters or request body. Requires the current user bearer token.

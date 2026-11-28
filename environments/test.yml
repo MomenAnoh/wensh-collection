@@ -1,14 +1,14 @@
 name: test
 variables:
   - name: userUrl
-    value: https://8e4b-156-203-162-33.ngrok-free.app/api/v1/user
+    value: https://e056-156-203-217-196.ngrok-free.app/api/v1/user
     description: ""
   - name: driverUrl
-    value: https://8e4b-156-203-162-33.ngrok-free.app/api/v1/driver
+    value: https://e056-156-203-217-196.ngrok-free.app/api/v1/driver
     description: ""
   - name: offerId
     value: "1"
-    description: "Set this to the offer ID to accept."
+    description: Set this to the offer ID to accept.
   - name: orderId
     value: "1"
     description: Set this to the order ID for the offer.
